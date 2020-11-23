@@ -10,6 +10,6 @@ public class HelloWorldController {
 
     @GetMapping
     public String hello() {
-        return "This is UserMicro";
+        return "This is UserMicro inside cluster";
     }
 }
