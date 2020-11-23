@@ -6,7 +6,7 @@ build:
       docker:
         dockerfile: Dockerfile
   local:
-    push: false
+    push: true
 
 deploy:
   kubectl:

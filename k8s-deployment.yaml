@@ -15,6 +15,7 @@ spec:
       containers:
       - name: usermicro
         image: asimarunava/usermicro
+        imagePullPolicy: IfNotPresent
         resources:
           requests:
             cpu: 0.5
