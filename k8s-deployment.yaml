@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usermicro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usermicro
+  template:
+    metadata:
+      labels:
+        app: usermicro
+    spec:
+      containers:
+      - name: usermicro
+        image: asimarunava/usermicro
+        resources:
+          requests:
+            cpu: 0.5
+            memory: 512Mi
+          limits:
+            cpu: 2.0
+            memory: 1Gi
+        ports:
+        - name: http
+          containerPort: 8080
