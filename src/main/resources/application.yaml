@@ -1,0 +1,3 @@
+app:
+  config: Default value
+  environmentVariable: ${ENVIRONMENT_CONFIG:Default value}

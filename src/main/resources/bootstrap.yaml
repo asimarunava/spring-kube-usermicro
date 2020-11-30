@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: usermicro
+  cloud:
+    kubernetes:
+      enabled: true
+      config:
+        enabled: true
+        paths: /etc/config/application.yaml
+      reload:
+        enabled: true
+        mode: event
+        strategry: refresh
+
+management:
+  endpoint:
+    restart.enabled : true
+    health.enabled : true
+    info.enabled : true
