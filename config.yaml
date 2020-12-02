@@ -8,12 +8,9 @@ data:
   #  refer to Spring Cloud Kubernetes Config documentation or source code
   application.yaml: |
     app:
-      config: This is ASIM 1
-    welcome:
-      message: Hello Youtube from app.yaml file
-    message: Hi from app.properties
-
-
+      config: This is ASIM 008
+    bean:
+      message: This is coming from K8s Cluster.
 ---
 apiVersion: v1
 kind: ConfigMap

@@ -6,7 +6,8 @@ spring:
       enabled: true
       config:
         enabled: true
-        paths: /etc/config/application.yaml
+        name: usermicro
+        namespace: default
       reload:
         enabled: true
         mode: event

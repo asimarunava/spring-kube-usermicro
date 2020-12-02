@@ -27,16 +27,9 @@ spec:
         ports:
         - name: http
           containerPort: 8080
-        volumeMounts:
-          - name: applicationyaml
-            mountPath: etc/config
         env:
           - name: ENVIRONMENT_CONFIG
             valueFrom:
               configMapKeyRef:
                 name: environment-variable-config
                 key: ENVIRONMENT_CONFIG
-      volumes:
-        - name: applicationyaml
-          configMap:
-            name: usermicro
