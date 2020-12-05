@@ -1,4 +1,5 @@
 # spring-kube-usermicro
+# This is to integrate Kafka
 
 This runs on Nodeport. This is the entry point to k8s Cluster without LB and Ingress.
 
