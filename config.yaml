@@ -8,7 +8,7 @@ data:
   #  refer to Spring Cloud Kubernetes Config documentation or source code
   application.yaml: |
     app:
-      config: This is ASIM 008
+      config: Inside Kube Cluster Config.
     bean:
       message: This is coming from K8s Cluster.
 ---

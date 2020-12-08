@@ -1,3 +1,5 @@
 app:
-  config: Default value
+  config: Inside App properties yaml Config.
   environmentVariable: ${ENVIRONMENT_CONFIG:Default value}
+bean:
+  message: This is from aap yaml file
