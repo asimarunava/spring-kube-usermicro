@@ -3,3 +3,20 @@ app:
   environmentVariable: ${ENVIRONMENT_CONFIG:Default value}
 bean:
   message: This is from aap yaml file
+devglan:
+  kafka:
+    topic: first_topic
+
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: test-group
+      auto-offset-reset: earliest
+kafka:
+  topic:
+    boot: first_topic

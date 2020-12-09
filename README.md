@@ -1,4 +1,6 @@
 # spring-kube-usermicro
+#To run Locally (not inside Cluster)
+java -jar -Dspring.cloud.kubernetes.config.enabled=false ./target/app.jar
 # This is to integrate Kafka
 
 This runs on Nodeport. This is the entry point to k8s Cluster without LB and Ingress.
@@ -21,7 +23,7 @@ This Repo(usermicro) springboot app is simple application for to see
 
 Before deploying the springboot app make sure following yaml files are applied to k8s cluster.
 
-kubectl apply -f rbac.yaml
+kubectl apply -f rbac.yaml <br>
 kubectl apply -f config.yaml
 
 Then run below command
