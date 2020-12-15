@@ -17,7 +17,9 @@ docker ps
 # To create a Topic inside Kafka
 docker exec -it kafka bash
 kafka-topics --zookeeper zookeeper:2181 --list
+
 kafka-topics --zookeeper zookeeper:2181 --create --topic first_topic --replication-factor 1 --partitions 1
+
 kafka-topics --zookeeper zookeeper:2181 --list
 
 
