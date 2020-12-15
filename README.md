@@ -1,7 +1,4 @@
 # spring-kube-usermicro
-#To run Locally (not inside Cluster)
-java -jar -Dspring.cloud.kubernetes.config.enabled=false ./target/app.jar
-
 # How to Run
 #This is a kafka Producer posting msg to  topic name "first_topic"
 # usermicro Spring Boot with Kafka
