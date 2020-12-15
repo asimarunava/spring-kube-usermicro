@@ -17,7 +17,7 @@ public class ProducerServiceImpl implements ProducerService{
     @Override
     public void send() {
          for(int i = 0; i < 10; i++){
-            System. out.println(i);
+            System. out.println("Data pushed to Kafka");
             kafkaTemplate.send(kafkaTopic, Integer.toString(i),  "test message - " + i );
         }
 

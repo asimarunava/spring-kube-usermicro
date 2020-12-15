@@ -1,51 +1,41 @@
 # spring-kube-usermicro
 #To run Locally (not inside Cluster)
 java -jar -Dspring.cloud.kubernetes.config.enabled=false ./target/app.jar
-# This is to integrate Kafka
-
-This runs on Nodeport. This is the entry point to k8s Cluster without LB and Ingress.
-
-# Prerequisite
-Must Have Local K8s Cluster
-Must have Skaffold 
-
-
-
-This Repo(usermicro) springboot app is simple application for to see
-* Load Application property file using k8s configMap.
-* Spring Auto refresh the properties value if changes occurs in ConfigMap
-* We need RBAC policy for our springboot app so that it can watch the configMap.
-
-
-
 
 # How to Run
+#This is a kafka Producer posting msg to  topic name "first_topic"
+# usermicro Spring Boot with Kafka
+* Run This on machine not inside k8s cluster.
 
-Before deploying the springboot app make sure following yaml files are applied to k8s cluster.
+java -jar -Dspring.cloud.kubernetes.config.enabled=false ./target/usermicro-0.0.1-SNAPSHOT.jar
+# To Run Kafka locally. Run below commands.
+docker network create foo
 
-kubectl apply -f rbac.yaml <br>
-kubectl apply -f config.yaml
+docker run --network=foo -e ZOOKEEPER_CLIENT_PORT=2181 --name zookeeper confluent/zookeeper
 
-Then run below command
+docker run --network=foo -p 9092:9092 --name kafka  -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1  confluent/kafka
 
-mvn clean install -DskipTests && skaffold run
+docker ps
 
-Check on which nodeport the application is running.
+# To create a Topic inside Kafka
+docker exec -it kafka bash
+kafka-topics --zookeeper zookeeper:2181 --list
+kafka-topics --zookeeper zookeeper:2181 --create --topic first_topic --replication-factor 1 --partitions 1
+kafka-topics --zookeeper zookeeper:2181 --list
 
-goto
-localhost:nodeport/
-It should print the ConfigMap value.
 
-{bean.message: This is coming from K8s Cluster.}
+To post messages to Kafka first_topic hit below url
+#make a post request to below url
+localhost:8080/kafka
+topic=first_topic
+msg=pushall
 
-Then update the configmap value to
-{bean.message: This is coming from K8s Cluster 123 changed.}
 
-then apply the changes
-kubectl apply -f config.yaml
-then visit 
-localhost:nodeport/
-it should print the updated value.
+curl --request POST \
+  --url http://localhost:8080/kafka \
+  --form topic=first_topic \
+  --form 'msg=pushall'
+
 
 Cheers...
 Feel free to email me in case any issue
