@@ -25,8 +25,13 @@ kafka-topics --zookeeper zookeeper:2181 --list
 
 To post messages to Kafka first_topic hit below url
 #make a post request to below url
+
 localhost:8080/kafka
+
+with form value 
+
 topic=first_topic
+
 msg=pushall
 
 
