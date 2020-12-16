@@ -5,10 +5,15 @@ metadata:
   labels:
     name: usermicro-service
 spec:
-  ports:
-    - port: 8080
-      targetPort: 8080
-      protocol: TCP
   selector:
     app: usermicro
   type: NodePort
+  ports:
+    - name: springboot
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - name: actuator
+      protocol: TCP
+      port: 8081
+      targetPort: 8081

@@ -30,7 +30,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 subjects:
   - kind: ServiceAccount
-    name: default
+    name: spring-service-account
     namespace: default
 
 ---

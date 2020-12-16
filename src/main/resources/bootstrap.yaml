@@ -14,6 +14,8 @@ spring:
         strategry: refresh
 
 management:
+  server:
+    port: 8081
   endpoint:
     restart.enabled : true
     health.enabled : true

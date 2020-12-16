@@ -12,7 +12,7 @@ spec:
       labels:
         app: usermicro
     spec:
-      serviceAccountName: default
+      serviceAccountName: spring-service-account
       containers:
       - name: usermicro
         image: asimarunava/usermicro
